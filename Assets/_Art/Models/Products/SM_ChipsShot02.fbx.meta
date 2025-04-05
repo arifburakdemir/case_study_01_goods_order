@@ -3,7 +3,12 @@ guid: 979ec52f1d1ddb744b6aa485408327e4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ChipsShots_01
+    second: {fileID: 2100000, guid: 80659c1ed11b3224d9be05f445f08ba4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

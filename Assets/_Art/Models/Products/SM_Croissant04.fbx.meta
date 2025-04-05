@@ -3,7 +3,12 @@ guid: a1b5d0ee19d522f40bda4a09be3ad947
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Croissants_01
+    second: {fileID: 2100000, guid: 2c06b43f6be5c6b40a74740bb91976df, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

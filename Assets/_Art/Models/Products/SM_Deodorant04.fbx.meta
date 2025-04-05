@@ -3,7 +3,12 @@ guid: 3764848bfcfe4c148a033f0f83b48922
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Deodorant_01
+    second: {fileID: 2100000, guid: 102b58993db4147428477eaa871dcee1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

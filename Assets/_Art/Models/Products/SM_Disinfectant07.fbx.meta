@@ -3,7 +3,17 @@ guid: 7afc246aa92dac94c81f475a0c39e000
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Disinfectant_02
+    second: {fileID: 2100000, guid: 2983a17892028fe45b063c55499f6970, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastic
+    second: {fileID: 2100000, guid: dd96087cf65dbd34d90178f08fa07c67, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

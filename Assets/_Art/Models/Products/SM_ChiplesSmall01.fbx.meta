@@ -3,7 +3,17 @@ guid: 397409b666640b641a0df8a581978661
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chiples_Small
+    second: {fileID: 2100000, guid: 8af169af3487ea44f9a4c9248189433e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastic
+    second: {fileID: 2100000, guid: b86013663a3c69940a236cdfb16a5fe5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

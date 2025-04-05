@@ -3,7 +3,12 @@ guid: 090ec77c54e090b4793966b914b696e4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HandCream_02
+    second: {fileID: 2100000, guid: 5a1dbe6485a26a6448615cd26a2e5362, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

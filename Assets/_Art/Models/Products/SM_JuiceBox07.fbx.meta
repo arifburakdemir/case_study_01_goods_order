@@ -3,7 +3,17 @@ guid: a167219eb765d5f47a3650cc94242bc6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: JuiceBox_02
+    second: {fileID: 2100000, guid: c81fdd05c634cce4bb629af2d2ddf620, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipette
+    second: {fileID: 2100000, guid: de3e61229443db640945f6b33a5968b7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

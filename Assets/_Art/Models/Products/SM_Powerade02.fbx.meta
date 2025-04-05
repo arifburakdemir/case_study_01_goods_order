@@ -3,7 +3,22 @@ guid: c8ee778e104b6da40bf706ccea643e49
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 5cf842d5db8bf31498a4dcd33e4afe7d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Powerade_Labels_01
+    second: {fileID: 2100000, guid: 45aa195892e52fe42a37b80a96f1c6bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Powerade_Liquid_02
+    second: {fileID: 2100000, guid: e59565f4cb8bc144c9093f5af00f2850, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

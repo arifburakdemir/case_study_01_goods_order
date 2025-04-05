@@ -3,7 +3,12 @@ guid: e20af059fa0382e44a2ce01bc41257c3
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PeanutButter_01
+    second: {fileID: 2100000, guid: ffa1260d9e0900d4c9d3842aeb4f7629, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
