@@ -415,6 +415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PRF_cargo_box
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6df2b2963d315eb47bbfc0510ae5bb28, type: 3}
+      propertyPath: m_TagString
+      value: Box
+      objectReference: {fileID: 0}
     - target: {fileID: 1547346186349838699, guid: 6df2b2963d315eb47bbfc0510ae5bb28, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7009094
@@ -481,13 +485,13 @@ PrefabInstance:
       addedObject: {fileID: 7549946081478240673}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6df2b2963d315eb47bbfc0510ae5bb28, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4371417449241251132}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6df2b2963d315eb47bbfc0510ae5bb28, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4377494396413320226}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6df2b2963d315eb47bbfc0510ae5bb28, type: 3}
       insertIndex: -1
       addedObject: {fileID: 547036009299450489}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6df2b2963d315eb47bbfc0510ae5bb28, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5516424973170447480}
   m_SourcePrefab: {fileID: 100100000, guid: 6df2b2963d315eb47bbfc0510ae5bb28, type: 3}
 --- !u!1 &1191465237614348651 stripped
 GameObject:
@@ -527,36 +531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a79796daf91554b96482204e5806f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _productManager: {fileID: 4371417449241251132}
+  _productDeckManager: {fileID: 5516424973170447480}
   _stateController: {fileID: 4377494396413320226}
---- !u!114 &4371417449241251132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1191465237614348651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c832111568a28b4684e1781bbd97fe8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startProductList: []
-  _pointDataList:
-  - productPoint: {fileID: 5500193942988811883}
-    productController: {fileID: 0}
-  - productPoint: {fileID: 2076050635488383433}
-    productController: {fileID: 0}
-  - productPoint: {fileID: 910315989013660629}
-    productController: {fileID: 0}
-  - productPoint: {fileID: 963772407870955956}
-    productController: {fileID: 0}
-  - productPoint: {fileID: 4826097002947723597}
-    productController: {fileID: 0}
-  - productPoint: {fileID: 638065086193743919}
-    productController: {fileID: 0}
-  IsCompleted: 0
-  boxController: {fileID: 7549946081478240673}
 --- !u!114 &4377494396413320226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,7 +550,6 @@ MonoBehaviour:
   boxRenderer: {fileID: 3223363687676932268}
   lockedMat: {fileID: 2100000, guid: 40761afe94962b64c8232ae207378365, type: 2}
   unlockedMat: {fileID: 2100000, guid: 40761afe94962b64c8232ae207378365, type: 2}
-  boxController: {fileID: 7549946081478240673}
 --- !u!65 &547036009299450489
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -596,6 +571,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.75, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &5516424973170447480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191465237614348651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 633d472d0eb02de4c845d9acbe30c767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startProductList: []
+  _pointDataList:
+  - productPoint: {fileID: 5500193942988811883}
+    productController: {fileID: 0}
+  - productPoint: {fileID: 2076050635488383433}
+    productController: {fileID: 0}
+  - productPoint: {fileID: 910315989013660629}
+    productController: {fileID: 0}
+  - productPoint: {fileID: 963772407870955956}
+    productController: {fileID: 0}
+  - productPoint: {fileID: 4826097002947723597}
+    productController: {fileID: 0}
+  - productPoint: {fileID: 638065086193743919}
+    productController: {fileID: 0}
+  IsCompleted: 0
 --- !u!4 &2000513022598747089 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6df2b2963d315eb47bbfc0510ae5bb28, type: 3}

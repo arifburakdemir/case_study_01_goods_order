@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets._Code
 {
-    public class ProductController: MonoBehaviour
+    public class ProductController : MonoBehaviour
     {
         [SerializeField] private ProductId _productId;
         [SerializeField] private Transform _productBody;
@@ -14,12 +14,19 @@ namespace Assets._Code
 
         public void Pick()
         {
-            _productBody.DOLocalMoveY(1,0.3f);
+            _productBody.DOKill();
+            _productBody.DOLocalMoveY(1, 0.3f)
+                .OnComplete(()=> _productBody.DOLocalMoveY(0.1f, 1f)
+                                    .SetRelative()
+                                    .SetEase(Ease.InOutQuad)
+                                    .SetLoops(-1,LoopType.Yoyo));
+            
         }
 
         public void Release()
         {
-            _productBody.DOLocalMoveY(0, 0.3f);
+            _productBody.DOKill();
+            _productBody.DOLocalMoveY(0, 0.15f);
         }
 
     }

@@ -1,28 +1,33 @@
-using Assets._Code.Box;
+using Assets._Code.Product;
+using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxProductManager), typeof(BoxStateController))]
-public class BoxController : MonoBehaviour
+namespace Assets._Code.Box
 {
-    [SerializeReference] private BoxProductManager _productManager;
-    [SerializeReference] private BoxStateController _stateController;
-
-    public BoxProductManager productManager => _productManager;
-    public BoxStateController stateController => _stateController; 
-
-    private void Reset()
+    [RequireComponent(typeof(ProductDeckManager))]
+    public class BoxController : BaseBoxController
     {
-        _productManager = GetComponent<BoxProductManager>();
-        _productManager.boxController = this;
+        [SerializeReference] private BoxStateController _stateController;
 
-        _stateController = GetComponent<BoxStateController>();
-        _stateController.boxController = this;
+        public BoxStateController stateController => _stateController;
+
+        private void Reset()
+        {
+            _productDeckManager = GetComponent<ProductDeckManager>();
+            _stateController = GetComponent<BoxStateController>();
+        }
+
+        private void Start()
+        {
+            _stateController.Init();
+            _productDeckManager.Init();
+        }
+
+        public override bool IsLocked()
+        {
+            return _stateController.IsLocked && base.IsLocked();
+        }
+
+
     }
-
-    private void Awake()
-    {
-        _stateController.Init();
-        _productManager.Init();
-    }
-
 }

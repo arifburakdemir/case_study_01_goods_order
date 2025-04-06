@@ -1,53 +1,57 @@
 using Assets._Code.Box;
+using Assets._Code.Product;
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxProductManager))]
-public class BoxStateController : MonoBehaviour
+namespace Assets._Code.Box
 {
-    public Action onStateChange;
-
-    [Header("Lock Settings")]
-    [SerializeField] private BoxStateController[] lockBoxAr;
-
-    [Header("Animator Settings")]
-    [SerializeField] private Animator boxAnimator;
-
-    [Header("Render Settings")]
-    [SerializeField] private Renderer boxRenderer;
-    [SerializeField] private Material lockedMat;
-    [SerializeField] private Material unlockedMat;
-
-    [SerializeReference, HideInInspector] public BoxController boxController;
-    
-    public BoxProductManager BoxProductManager { get; private set; }
-
-    void Awake()
+    [RequireComponent(typeof(ProductDeckManager))]
+    public class BoxStateController : MonoBehaviour
     {
-        BoxProductManager = GetComponent<BoxProductManager>();
-        boxAnimator = GetComponent<Animator>();
-    }
+        public Action onStateChange;
 
-    public void Init()
-    {
-        RefreshState();
-    }
+        [Header("Lock Settings")]
+        [SerializeField] private BoxStateController[] lockBoxAr;
 
-    private void RefreshState()
-    {
-        foreach (var curBox in lockBoxAr)
+        [Header("Animator Settings")]
+        [SerializeField] private Animator boxAnimator;
+
+        [Header("Render Settings")]
+        [SerializeField] private Renderer boxRenderer;
+        [SerializeField] private Material lockedMat;
+        [SerializeField] private Material unlockedMat;
+
+        public ProductDeckManager ProductDeckManager { get; private set; }
+        public bool IsLocked { get; set; }
+
+        void Awake()
         {
-            if (curBox && !curBox.BoxProductManager.IsCompleted)
-            {
-                boxRenderer.material = lockedMat;
-                boxAnimator.SetTrigger("Closed");
-
-                return;
-            }
+            ProductDeckManager = GetComponent<ProductDeckManager>();
+            boxAnimator = GetComponent<Animator>();
         }
 
-        boxRenderer.material = unlockedMat;
-        boxAnimator.SetTrigger("Opened");
-    }
+        public void Init()
+        {
+            RefreshState();
+        }
 
+        private void RefreshState()
+        {
+            foreach (var curBox in lockBoxAr)
+            {
+                if (curBox && !curBox.ProductDeckManager.IsCompleted)
+                {
+                    boxRenderer.material = lockedMat;
+                    boxAnimator.SetTrigger("Closed");
+                    IsLocked = true;
+                    return;
+                }
+            }
+
+            boxRenderer.material = unlockedMat;
+            boxAnimator.SetTrigger("Opened");
+            IsLocked = false;
+        }
+
+    }
 }
