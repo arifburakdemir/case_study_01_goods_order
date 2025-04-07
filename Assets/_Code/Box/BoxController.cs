@@ -25,7 +25,7 @@ namespace Assets._Code.Box
 
         public override bool IsLocked()
         {
-            return _stateController.IsLocked && base.IsLocked();
+            return _stateController.IsLocked || base.IsLocked();
         }
 
 

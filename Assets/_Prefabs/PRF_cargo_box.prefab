@@ -548,7 +548,7 @@ MonoBehaviour:
   lockBoxAr: []
   boxAnimator: {fileID: 690683910964342292}
   boxRenderer: {fileID: 3223363687676932268}
-  lockedMat: {fileID: 2100000, guid: 40761afe94962b64c8232ae207378365, type: 2}
+  lockedMat: {fileID: 2100000, guid: 0663a5825d31bdb428bdabf656b86e4e, type: 2}
   unlockedMat: {fileID: 2100000, guid: 40761afe94962b64c8232ae207378365, type: 2}
 --- !u!65 &547036009299450489
 BoxCollider:
@@ -569,8 +569,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.75, y: 2, z: 2}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 2.75, y: 1, z: 2}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &5516424973170447480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,6 +597,7 @@ MonoBehaviour:
     productController: {fileID: 0}
   - productPoint: {fileID: 638065086193743919}
     productController: {fileID: 0}
+  _productLimit: 6
   IsCompleted: 0
 --- !u!4 &2000513022598747089 stripped
 Transform:

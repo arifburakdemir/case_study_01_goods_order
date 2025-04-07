@@ -1,6 +1,7 @@
 using Assets._Code.Box;
 using Assets._Code.Product;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets._Code.Box
@@ -8,10 +9,8 @@ namespace Assets._Code.Box
     [RequireComponent(typeof(ProductDeckManager))]
     public class BoxStateController : MonoBehaviour
     {
-        public Action onStateChange;
-
         [Header("Lock Settings")]
-        [SerializeField] private BoxStateController[] lockBoxAr;
+        [SerializeField] private List<BaseBoxController> lockBoxAr;
 
         [Header("Animator Settings")]
         [SerializeField] private Animator boxAnimator;
@@ -33,24 +32,33 @@ namespace Assets._Code.Box
         public void Init()
         {
             RefreshState();
+
+            foreach (var curBox in lockBoxAr)
+            {
+                curBox.onDestroy += RemoveLockedBox;
+            }
+        }
+
+        private void RemoveLockedBox(BaseBoxController boxToRemove)
+        {
+            lockBoxAr.Remove(boxToRemove);
+            RefreshState();
         }
 
         private void RefreshState()
         {
-            foreach (var curBox in lockBoxAr)
+            if (lockBoxAr.Count > 0)
             {
-                if (curBox && !curBox.ProductDeckManager.IsCompleted)
-                {
-                    boxRenderer.material = lockedMat;
-                    boxAnimator.SetTrigger("Closed");
-                    IsLocked = true;
-                    return;
-                }
+                boxRenderer.material = lockedMat;
+                boxAnimator.SetTrigger("Closed");
+                IsLocked = true;
             }
-
-            boxRenderer.material = unlockedMat;
-            boxAnimator.SetTrigger("Opened");
-            IsLocked = false;
+            else
+            {
+                boxRenderer.material = unlockedMat;
+                boxAnimator.SetTrigger("Opened");
+                IsLocked = false;
+            }
         }
 
     }

@@ -41,7 +41,6 @@ public class PlayerInput : MonoBehaviour
                     if (curBoxController.IsLocked())
                         return;
 
-
                     if (_selBoxController == null)
                         FirstBoxSelect(curBoxController, hit.point);
                     else if (curBoxController != _selBoxController)
@@ -98,10 +97,6 @@ public class PlayerInput : MonoBehaviour
 
     private void DiffirentBoxSelect(BaseBoxController targetBox, Vector3 hitPos)
     {
-        // If box is Locked
-        if (targetBox.IsLocked())
-            return;
-
         // If Deck is full start fresh selection
         if (targetBox.productDeckManager.IsFull)
         {

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -12,13 +13,17 @@ namespace Assets._Code.Product
     {
         [SerializeField] private List<ProductController> _startProductList;
         [SerializeField] private List<ProductPoint> _pointDataList;
-        [SerializeField] private int _productLimit = 6;
+        [SerializeField] private bool _destroyOnEmpty = true;
+
+        public Action OnEmpty;
+        public Action OnComplete;
 
         public bool IsCompleted;
 
+        private int ProductLimit => _pointDataList.Count;
         public int ProductCount => _pointDataList.Count(p => !p.IsEmpty);
-        public bool IsFull => ProductCount == _productLimit;
-        public int Remaining => _productLimit - ProductCount;
+        public bool IsFull => ProductCount == ProductLimit;
+        public int Remaining => ProductLimit - ProductCount;
         public bool IsLocked { get; private set; }
 
         public void Init()
@@ -41,6 +46,19 @@ namespace Assets._Code.Product
                         curPointData.productController = null;
                 }
             }
+
+            if (ProductCount == 0 && _destroyOnEmpty)
+            {
+                IsLocked = true;
+                DOTween.Sequence()
+                    .Append(transform.DOScale(1.1f, 0.1f))
+                    .Append(transform.DOScale(0, 0.3f))
+                    .OnComplete(() =>
+                    {
+                        Destroy(gameObject);
+                        OnEmpty?.Invoke();
+                    });
+            }
         }
 
         public void AddProduct(List<ProductController> productsToTransfer)
@@ -62,10 +80,12 @@ namespace Assets._Code.Product
                         // Stop Floating Tween
                         newProduct.Release();
 
-                        // Jump Product
+                        // Jump Tween
                         var jumpTween = newProduct.transform.DOJump(curPointData.productPoint.position, 5, 1, 0.5f);
                         if (productsToTransfer.Count == 0)
                             jumpTween.OnComplete(() => IsLocked = false);
+
+                        // Add Jump to Sequence
                         seq.Insert(transeferCount * 0.1f, jumpTween);
 
                         transeferCount++;
@@ -80,11 +100,7 @@ namespace Assets._Code.Product
             // Order Product by distance between hitPos
             var filteredProductAr = _pointDataList
                  .Where(p => !p.IsEmpty)
-                 .OrderBy(p =>
-                 {
-                     Debug.DrawLine(hitPos, p.productPoint.position, Color.red, 5);
-                     return Vector3.Distance(hitPos, p.productPoint.position);
-                 })
+                 .OrderBy(p => Vector3.Distance(hitPos, p.productPoint.position))
             .ToList();
 
             return filteredProductAr[0].productController.ProductId;
